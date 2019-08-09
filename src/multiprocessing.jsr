@@ -1,0 +1,26 @@
+class Process
+    // Creates a new process object.
+    // @arg func the function that will be called upon process start
+    // @arg args the arguments to pass to the function (must be a tuple)
+    fun new(func, args=null)
+        if args == null then args = () end
+        if !(args is Tuple) then
+            raise TypeException('args must be a Tuple')
+        end
+        if !(func is Function) then
+            raise TypeException('func must be a Function')
+        end
+
+        this.__func = func
+        this.__args = args
+        this.__pid = -1
+    end
+
+    // Starts a process by calling its start function with the supplied arguments
+    native start()
+
+    // Waits until the process terminates
+    native join()
+end
+
+class ProcessException : Exception end
