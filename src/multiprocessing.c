@@ -59,7 +59,7 @@ static bool Process_start(JStarVM *vm) {
     // call and exit
     if(jsrCall(vm, (uint8_t) arity) != VM_EVAL_SUCCESS) {
         fprintf(stderr, "forked process (pid %d):\n", getpid());
-        jsrPrintStackTrace(vm);
+        jsrPrintStacktrace(vm, -1);
         exit(EXIT_FAILURE);
     } else {
         exit(EXIT_SUCCESS);
