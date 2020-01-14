@@ -20,12 +20,10 @@ static bool Process_start(JStarVM *vm) {
 
     jsrGetField(vm, 0, M_ARGS);
     if(!jsrCheckTuple(vm, -1, "Process."M_ARGS)) return false;
-    jsrTupleGetLength(vm, -1);
-    size_t arity = jsrGetNumber(vm, -1);
+    size_t arity = jsrTupleGetLength(vm, -1);
     if(arity > UINT8_MAX) {
         JSR_RAISE(vm, "TypeException", "Too many arguments to start fucntion (max %d).", (int)UINT8_MAX);
     }
-    jsrPop(vm);
     jsrPop(vm);
 
     jsrGetField(vm, 0, M_FUNC);
