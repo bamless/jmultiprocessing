@@ -23,4 +23,4 @@ class Process
     native join()
 end
 
-class ProcessException : Exception end
+class ProcessException is Exception end
