@@ -3,13 +3,9 @@ class Process
     // @arg func the function that will be called upon process start
     // @arg args the arguments to pass to the function (must be a tuple)
     fun new(func, args=null)
-        if args == null then args = () end
-        if !(args is Tuple) then
-            raise TypeException('args must be a Tuple')
-        end
-        if !(func is Function) then
-            raise TypeException('func must be a Function')
-        end
+        if !args args = () end
+        typeAssert(args, Tuple, "args")
+        typeAssert(func, Function, "func")
 
         this.__func = func
         this.__args = args
